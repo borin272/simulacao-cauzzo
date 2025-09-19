@@ -11,17 +11,18 @@ class Consulta extends Model
         'medico_id',
         'data_consulta',
         'status',
+        'motivo',
         'anotacoes',
     ];
 
     public function paciente()
     {
-        return $this->belongsTo(Paciente::class);
+        return $this->belongsTo(User::class, 'paciente_id');
     }
 
     public function medico()
     {
-        return $this->belongsTo(Medico::class);
+        return $this->belongsTo(User::class, 'medico_id');
     }
 
     public function prescricoes()

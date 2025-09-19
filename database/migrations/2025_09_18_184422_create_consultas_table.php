@@ -8,8 +8,8 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('consultas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('paciente_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('medico_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('paciente_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('medico_id')->constrained('users')->cascadeOnDelete();
             $table->string('data_consulta');
             $table->string('status')->default('Agendada'); // Agendada, Concluída, Cancelada
             $table->text('anotacoes')->nullable();
